@@ -1,10 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ log: ['query'] });
 
 async function main() {
-    const user = await prisma.user.findMany({
+    const user = await prisma.user.findUnique({
         where: {
-            id: 3
+            id: 1
+        },
+        include: {
+            posts: true
         }
     })
     console.log(user)

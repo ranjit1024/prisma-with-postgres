@@ -10,12 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
-const prisma = new client_1.PrismaClient();
+const prisma = new client_1.PrismaClient({ log: ['query'] });
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const user = yield prisma.user.findMany({
+        const user = yield prisma.user.findUnique({
             where: {
-                id: 3
+                id: 1
+            },
+            include: {
+                posts: true
             }
         });
         console.log(user);
