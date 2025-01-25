@@ -8,6 +8,7 @@ async function main() {
             title: "how to be developer ",
             content: "Practice",
             authorId: 1,
+            published: true,
         }
     })
 }
