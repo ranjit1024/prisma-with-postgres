@@ -13,20 +13,13 @@ const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield prisma.user.create({
+        yield prisma.post.create({
             data: {
-                email: "sonalidas@gmail.com",
-                name: "sonali das"
+                title: "how to be developer ",
+                content: "Practice",
+                authorId: 1,
             }
         });
     });
 }
-main()
-    .then(() => __awaiter(void 0, void 0, void 0, function* () {
-    yield prisma.$disconnect();
-}))
-    .catch((e) => __awaiter(void 0, void 0, void 0, function* () {
-    console.error(e);
-    yield prisma.$disconnect();
-    process.exit(1);
-}));
+main();
